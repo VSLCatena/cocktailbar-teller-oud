@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="author" content="uService" />
+    <link type="text/css" rel="stylesheet" href="cocktailbar.css" />
+    
+##  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="file:///home/pi/Desktop/COCO/jquery.min.js"></script>
+    <script type="text/javascript">
+    var numbers = [0, 0, 0, 0, 0, 0];
+    var currentval = 0;
+    $(function()
+    {
+        function showNewNumber(val)
+        {
+            switch(val) {
+                case "999":
+                    $('#number').html("Gesloten!");
+                    $('#number').css("font-size", "20vw");
+                    $('#history').html("Helaas!");
+                    $('#history2').html("");
+                    break;
+                case "998":
+                    $('#number').html("We gaan om " + currentval + ":" + numbers[0] + " uur open!");
+                    $('#number').css("font-size", "15vw");
+                    $('#history').html("");
+                    $('#history2').html("");
+                    break;
+                case "997":
+                    $('#number').html("Laatste ronde!");
+                    $('#number').css("font-size", "25vw");
+                    $('#history').html("");
+                    $('#history2').html("");
+                    break;
+                case "996":
+                    $('#number').html("Welkom bij");
+                    $('#number').css("font-size", "20vw");
+                    $('#history').html("COCOLOCO!");
+                    $('#history2').html("");
+                    break;
+                case "990":
+                    $('#number').html("UwU");
+                    $('#history').html("What's this?");
+                    $('#number').css("font-size", "35vw");
+                    $('#history2').html("");
+                    break;
+                default:
+                    if (val == 666) {
+                        $('#number').css("color", "#ff0000");
+                    } else {
+                        $('#number').css("color", "#3399ff");
+                    }
+                    var i;
+                    for (i = 6; i > 0; i--) {
+                        numbers[i] = numbers[i-1];
+                    }
+                    numbers[0] = currentval;
+                    $('#number').css("font-size", "30vw");
+                    $('#history').html(numbers.slice(0,3).toString());
+                    $('#history2').html(numbers.slice(3,6).toString());
+                    $('#number').html(val);
+            }
+            $('#inputNumber').val(null);
+            currentval = val;
+        }
+        $('#inputNumber').focus().keypress(function(event){
+            switch (event.which)
+            {
+                case 13: //enter
+                        showNewNumber($(this).val());
+                        return false;
+                    break;
+                case 43: //+
+                case 45: //-
+                console.log($('#number').html());
+                if ($(this).val().length == 0)
+                        $(this).val($('#number').html());
+                        $(this).val(parseInt($(this).val()) + (event.which == 43 ? 1 : -1)); ;
+                        return false;
+                    break;
+                case 46: //.
+                    showNewNumber(null);
+                    return false;
+                default:
+                    console.log(event.which);
+            }   
+        });
+    });
+    </script>
+	<title>Number</title>
+
+</head>
+<body>
+    <div id="container">
+        <div id="number"></div>
+        <div id="history"></div>
+        <div id="history2"></div>
+    </div>
+    <footer>
+        <input type="text" id="inputNumber" maxlength="3" />
+    </footer>
+</body>
+</html>

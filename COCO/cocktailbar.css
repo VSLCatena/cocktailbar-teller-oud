@@ -1,0 +1,45 @@
+body {
+	background-color:#000
+}
+
+#number {
+    margin-top:0px;
+	margin-left:auto;
+	margin-right:auto;
+	top: 0px;
+	color:#3399ff;
+	font-size:50vh;
+	text-align:center;
+}
+
+#container {
+    margin-top:0px;
+
+}
+
+#history {
+	margin-left:auto;
+	margin-right:auto;
+	color:#3399ff;
+	font-size:14vw;
+	text-align:center;  
+}
+#history2 {
+	margin-left:auto;
+	margin-right:auto;
+	color:#3399ff;
+	font-size:14vw;
+	text-align:center;  
+}
+
+footer	{
+	position:absolute;
+	bottom:0px;
+}
+
+#inputNumber {
+	background-color:#000;
+	color:#555;
+	width:25px;
+	border:none;
+}
